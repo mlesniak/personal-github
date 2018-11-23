@@ -16,12 +16,12 @@ import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 @Service
-public class Authentication {
+public class AuthenticationService {
     @Resource
     private User user;
     private final OAuth20Service service;
 
-    public Authentication() {
+    public AuthenticationService() {
         // TODO ML application.yaml uses environment
         String clientid = System.getenv("clientid");
         String secret = System.getenv("secret");

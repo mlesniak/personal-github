@@ -10,10 +10,10 @@ import javax.annotation.Resource;
 @Controller
 public class AuthenticationController {
     @Resource
-    private final Authentication authentication;
+    private final AuthenticationService authentication;
 
     @Autowired
-    public AuthenticationController(Authentication authentication) {
+    public AuthenticationController(AuthenticationService authentication) {
         this.authentication = authentication;
     }
 

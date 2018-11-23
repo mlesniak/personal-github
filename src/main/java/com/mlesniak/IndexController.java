@@ -1,6 +1,6 @@
 package com.mlesniak;
 
-import com.mlesniak.authentication.Authentication;
+import com.mlesniak.authentication.AuthenticationService;
 import com.mlesniak.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,10 +14,10 @@ import javax.annotation.Resource;
 public class IndexController {
     @Resource
     private User user;
-    private final Authentication authentication;
+    private final AuthenticationService authentication;
 
     @Autowired
-    public IndexController(Authentication authentication) {
+    public IndexController(AuthenticationService authentication) {
         this.authentication = authentication;
     }
 
