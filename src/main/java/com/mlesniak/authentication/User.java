@@ -4,10 +4,6 @@ public class User {
     private String username;
     private String accessToken;
 
-    public boolean isAuthenticated() {
-        return accessToken != null;
-    }
-
     public String getUsername() {
         return username;
     }

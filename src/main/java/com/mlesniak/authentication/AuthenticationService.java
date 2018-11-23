@@ -17,9 +17,9 @@ import java.util.concurrent.ExecutionException;
 
 @Service
 public class AuthenticationService {
+    private final OAuth20Service service;
     @Resource
     private User user;
-    private final OAuth20Service service;
 
     public AuthenticationService() {
         // TODO ML application.yaml uses environment
@@ -35,7 +35,7 @@ public class AuthenticationService {
         return service.getAuthorizationUrl();
     }
 
-    public void retrieveToken(String code) {
+    void retrieveToken(String code) {
         OAuth2AccessToken token = null;
         try {
             token = service.getAccessToken(code);
@@ -45,6 +45,18 @@ public class AuthenticationService {
         user.setAccessToken(token.getAccessToken());
 
         enrichUser();
+    }
+
+    public void revokeToken() {
+        user.setAccessToken(null);
+    }
+
+    public boolean isAuthenticated() {
+        return user.getAccessToken() != null;
+    }
+
+    public User getUser() {
+        return user;
     }
 
     private void enrichUser() {
@@ -59,9 +71,5 @@ public class AuthenticationService {
         } catch (InterruptedException | ExecutionException | IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void revokeToken() {
-        user.setAccessToken(null);
     }
 }
