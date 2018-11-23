@@ -1,6 +1,7 @@
 package com.mlesniak;
 
 import com.mlesniak.authentication.Authentication;
+import com.mlesniak.authentication.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,23 +27,11 @@ public class IndexController {
         model.addAttribute("name", name);
         model.addAttribute("user", user.toString());
 
-        System.out.println(user);
+        // TODO ML Add filter
         if (!user.isAuthenticated()) {
             return "redirect:" + authentication.getAuthenticationUrl();
         }
 
-        return "greeting";
+        return "index";
     }
-
-//    @GetMapping("/callback")
-//    public String githubCallback(@RequestParam(name = "code") String code) {
-//        authentication.retrieveToken(code);
-//        return "redirect:/";
-//    }
-//
-//    @GetMapping("/logout")
-//    public String logout() {
-//        authentication.revokeToken();
-//        return "redirect:/";
-//    }
 }

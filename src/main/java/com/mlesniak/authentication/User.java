@@ -1,4 +1,4 @@
-package com.mlesniak;
+package com.mlesniak.authentication;
 
 public class User {
     private String username;
