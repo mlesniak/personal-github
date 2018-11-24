@@ -4,7 +4,7 @@
     <title>Getting Started: Serving Web Content</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
-<body>
+<img data-th-src="${user.attributes.avatar_url}" width="100"/>
 <table>
     <tr data-th-each="instance : ${user.attributes}">
         <td data-th-text="${instance.key}">key</td>
