@@ -5,9 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 </head>
 <body>
-<pre>
-    <span data-th-text="${user}"></span>
-</pre>
+<table>
+    <tr data-th-each="instance : ${user.attributes}">
+        <td data-th-text="${instance.key}">key</td>
+        <td data-th-text="${instance.value}">value</td>
+    </tr>
+</table>
 <a href="/logout">Logout</a>
 </body>
 </html>

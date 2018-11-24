@@ -66,8 +66,9 @@ public class AuthenticationService {
             Response response = service.execute(request);
             String body = response.getBody();
             ObjectMapper mapper = new ObjectMapper();
-            Map<String, Object> map = mapper.readValue(body, Map.class);
-            user.setUsername((String) map.get("login"));
+            Map<String, String> map = mapper.readValue(body, Map.class);
+            user.setUsername(map.get("login"));
+            user.setAttributes(map);
         } catch (InterruptedException | ExecutionException | IOException e) {
             e.printStackTrace();
         }

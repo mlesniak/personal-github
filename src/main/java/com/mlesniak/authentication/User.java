@@ -1,8 +1,19 @@
 package com.mlesniak.authentication;
 
+import java.util.Map;
+
 public class User {
     private String username;
     private String accessToken;
+    private Map<String, String> attributes;
+
+    public Map<String, String> getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(Map<String, String> attributes) {
+        this.attributes = attributes;
+    }
 
     public String getUsername() {
         return username;
@@ -25,6 +36,7 @@ public class User {
         return "User{" +
                 "username='" + username + '\'' +
                 ", accessToken='" + accessToken + '\'' +
+                ", attributes=" + attributes +
                 '}';
     }
 }
