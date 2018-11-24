@@ -24,9 +24,22 @@ public class AuthenticationFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws IOException, ServletException {
-        // Check if we are authenticated but ignore the callback URL.
+        // Ignore authentication and public URLs.
+        String[] ignoredURLs = new String[]{
+                "/callback"
+        };
         HttpServletRequest httpRequest = (HttpServletRequest) req;
-        if (!httpRequest.getRequestURI().equals("/callback") && !authenticationService.isAuthenticated()) {
+        String uri = httpRequest.getRequestURI();
+        boolean ignored = false;
+        for (String ignoredURL : ignoredURLs) {
+            if (uri.startsWith(ignoredURL)) {
+                ignored = true;
+                break;
+            }
+        }
+
+        // Check if we are authenticated for unignored URLs.
+        if (!ignored && !authenticationService.isAuthenticated()) {
             HttpServletResponse httpResponse = (HttpServletResponse) resp;
             String authenticationUrl = authenticationService.getAuthenticationUrl();
             httpResponse.sendRedirect(authenticationUrl);
