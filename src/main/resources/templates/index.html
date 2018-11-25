@@ -9,6 +9,11 @@
             margin: 30px auto auto;
             width: 960px;
             color: #333333;
+
+            border-left: 1px solid #eee;
+            border-right: 1px solid #eee;
+            padding-left: 30px;
+            padding-right: 30px;
         }
 
         div {
@@ -17,7 +22,7 @@
 
         .name {
             font-size: 30px;
-            grid-column: 1;
+            grid-column: 2;
             align-self: center;
         }
 
@@ -28,34 +33,51 @@
         }
 
         .picture {
-            grid-column: 2;
-            justify-self: end;
+            grid-column: 1;
+            justify-self: start;
             border: 1px solid #333333;
         }
 
-        hr {
-            color: #eeeeee;
+        table {
+            margin-top: 20px;
+            /*border: 1px solid black;*/
+            border-collapse: collapse;
         }
 
+        tr {
+            /*border: 1px solid #ddd;*/
+        }
+
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
 
     </style>
 </head>
 
 
 <div>
+    <img class="picture" data-th-src="${user.attributes.avatar_url}" width="100"/>
     <div class="name">
         <span data-th-text="${user.attributes.name}"></span>
         <a href data-th-text="'@'+${user.attributes.login}" data-th-href="${user.attributes.html_url}"></a>
     </div>
-    <img class="picture" data-th-src="${user.attributes.avatar_url}" width="100"/>
+
 </div>
-<hr/>
 <table>
+    <thead>
+    <tr>
+        <th>Property</th>
+        <th>Value</th>
+    </tr>
+    </thead>
+    <tbody>
     <tr data-th-each="instance : ${user.attributes}">
         <td data-th-text="${instance.key}">key</td>
         <td data-th-text="${instance.value}">value</td>
     </tr>
+    </tbody>
 </table>
-<a href="/logout">Logout</a>
 </body>
 </html>
