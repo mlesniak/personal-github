@@ -8,7 +8,7 @@
             font-family: Arial, Helvetica, sans-serif;
             margin: 30px auto auto;
             width: 960px;
-
+            color: #333333;
         }
 
         div {
@@ -19,6 +19,12 @@
             font-size: 30px;
             grid-column: 1;
             align-self: center;
+        }
+
+        .name > a {
+            font-size: initial;
+            color: #333333;
+            text-decoration: none;
         }
 
         .picture {
@@ -37,7 +43,10 @@
 
 
 <div>
-    <span class="name" data-th-text="${user.attributes.name}"></span>
+    <div class="name">
+        <span data-th-text="${user.attributes.name}"></span>
+        <a href data-th-text="'@'+${user.attributes.login}" data-th-href="${user.attributes.html_url}"></a>
+    </div>
     <img class="picture" data-th-src="${user.attributes.avatar_url}" width="100"/>
 </div>
 <hr/>
