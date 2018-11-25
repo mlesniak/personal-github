@@ -5,4 +5,4 @@ in Java. A running instance can be found [here](https://personal-github.herokuap
 
 After authenticating it shows the public available information about the currently logged in user.
 
-![github.png](picture)
+![github.png](https://raw.githubusercontent.com/mlesniak/personal-github/master/screenshot.png)
